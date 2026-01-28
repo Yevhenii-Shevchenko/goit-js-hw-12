@@ -12,27 +12,34 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-DF5lYoi4.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-CWKLx11g.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-xpOxgMII.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-DumFYO8Z.css">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-BxBLM7GX.css">
   </head>
   <body>
     <main>
-      <form class="form">
-        <label>
-          <input
-            type="text"
-            name="search-text"
-            placeholder="Search images..."
-            required
-          />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-      <div class="loader-container" style="display: none">
-        <span class="loader"></span>
+      <div class="container">
+        <form class="form">
+          <label>
+            <input
+              type="text"
+              name="search-text"
+              placeholder="Search images..."
+              required
+            />
+          </label>
+          <button type="submit">Search</button>
+        </form>
+
+        <ul class="gallery"></ul>
+
+        <div class="load-more-container">
+          <div class="loader-container">
+            <span class="loader"></span>
+          </div>
+          <button class="load-more-button" type="button">Load More</button>
+        </div>
       </div>
-      <ul class="gallery"></ul>
     </main>
   </body>
 </html>

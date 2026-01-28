@@ -1,27 +1,27 @@
-import{a as p,S as m,i as n}from"./assets/vendor-DF5lYoi4.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&r(i)}).observe(document,{childList:!0,subtree:!0});function s(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function r(e){if(e.ep)return;e.ep=!0;const t=s(e);fetch(e.href,t)}})();const g="https://pixabay.com/api/",y="54321560-f6f3fd1bbb688b32de8acdaed";async function h(a){const o={key:y,q:a,image_type:"photo",orientation:"horizontal",safesearch:!0};try{return(await p.get(g,{params:o})).data}catch(s){throw new Error(`Failed to fetch images: ${s.message}`)}}const b=new m(".gallery a",{captionsData:"alt",captionDelay:250}),c=document.querySelector(".gallery"),f=document.querySelector(".loader-container");function L(a){const o=a.map(({webformatURL:s,largeImageURL:r,tags:e,likes:t,views:i,comments:u,downloads:d})=>`
+import{a as P,S as E,i as a}from"./assets/vendor-xpOxgMII.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const l of r.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&t(l)}).observe(document,{childList:!0,subtree:!0});function i(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function t(e){if(e.ep)return;e.ep=!0;const r=i(e);fetch(e.href,r)}})();const I="https://pixabay.com/api/",R="54321560-f6f3fd1bbb688b32de8acdaed";async function p(s,o){const i={key:R,q:s,image_type:"photo",orientation:"horizontal",safesearch:!0,page:o,per_page:15};try{return(await P.get(I,{params:i})).data}catch(t){throw new Error(`Failed to fetch images: ${t.message}`)}}const $=new E(".gallery a",{captionsData:"alt",captionDelay:250}),y=document.querySelector(".gallery"),u=document.querySelector(".loader-container"),d=document.querySelector(".load-more-button");function b(s){const o=s.map(({webformatURL:i,largeImageURL:t,tags:e,likes:r,views:l,comments:S,downloads:q})=>`
       <li class="gallery-item">
-        <a href="${r}" class="gallery-link">
-          <img src="${s}" alt="${e}" loading="lazy" class="gallery-image"/>
+        <a href="${t}" class="gallery-link">
+          <img src="${i}" alt="${e}" loading="lazy" class="gallery-image"/>
         </a>
         <div class="gallery-info">
           <p class="info-item">
             <b>Likes</b>
-            ${t}
+            ${r}
           </p>
           <p class="info-item">
             <b>Views</b>
-            ${i}
+            ${l}
           </p>
           <p class="info-item">
             <b>Comments</b>
-            ${u}
+            ${S}
           </p>
           <p class="info-item">
             <b>Downloads</b>
-            ${d}
+            ${q}
           </p>
         </div>
           
       </li>
-      `).join("");c.insertAdjacentHTML("beforeend",o),b.refresh()}function B(){c.innerHTML=""}function w(){f.style.display="flex"}function l(){f.style.display="none"}const P=document.querySelector(".form");P.addEventListener("submit",a=>{a.preventDefault();const o=a.target.elements["search-text"],s=o.value.trim();if(o.value="",!s){n.error({title:"Error",message:"Please enter a search query.",position:"topRight"});return}B(),w(),h(s).then(r=>{if(l(),!r.hits||r.hits.length===0){n.info({title:"info",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",progressBarColor:"#B51B1B"});return}L(r.hits)}).catch(r=>{l(),n.error({title:"Error",message:r.message||"Failed to fetch images. Please try again.",position:"topRight",progressBarColor:"#B51B1B"}),console.error(r)})});
+      `).join("");y.insertAdjacentHTML("beforeend",o),$.refresh()}function B(){y.innerHTML=""}function L(){u&&u.classList.add("visible")}function f(){u&&u.classList.remove("visible")}function v(){d&&d.classList.add("visible")}function c(){d&&d.classList.remove("visible")}const h=document.querySelector(".form"),M=document.querySelector(".load-more-button");let n=1,g="",m=0;const w=15;h.addEventListener("submit",async s=>{s.preventDefault();const o=h.querySelector('input[name="search-text"]'),i=o.value.trim();if(o.value="",!i){a.error({title:"Error",message:"Please enter a search query.",position:"topRight"});return}n=1,g=i,c(),B(),L();try{const t=await p(g,n);if(m=t.totalHits,f(),!t.hits||t.hits.length===0){a.info({title:"info",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}b(t.hits),n*w>=m?(c(),a.info({title:"info",message:"We are sorry, but you have reached the end of search results.",position:"topRight"})):v()}catch(t){f(),a.error({title:"Error",message:t.message||"Failed to fetch images. Please try again.",position:"topRight"})}});M.addEventListener("click",async()=>{n+=1,c(),L();try{const s=await p(g,n);if(f(),!s.hits||s.hits.length===0){c(),a.info({title:"info",message:"We're sorry, but you've reached the end of search results.",position:"topRight"});return}b(s.hits);const o=document.querySelector(".gallery-item");if(o){const t=o.getBoundingClientRect().height;window.scrollBy({top:t*2,behavior:"smooth"})}n*w>=m?(c(),a.info({title:"info",message:"We're sorry, but you've reached the end of search results.",position:"topRight"})):v()}catch(s){f(),a.error({title:"Error",message:s.message||"Failed to fetch images. Please try again.",position:"topRight"})}});
 //# sourceMappingURL=index.js.map
